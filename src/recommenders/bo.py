@@ -21,7 +21,7 @@ class BORecommender(BaseRecommender):
             )
         else:
             self.optimizer.tell(self.last_config, self.last_score)
-        
+
         return self.optimizer.ask()
 
     def update(self, config, score):

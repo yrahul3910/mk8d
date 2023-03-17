@@ -1,6 +1,6 @@
 import pandas as pd
 
-from src.recommenders import RandomRecommender
+from src.recommenders.random import RandomRecommender
 
 
 data_file = 'data/stats.csv'
