@@ -1,5 +1,7 @@
 # Mario Kart 8 Deluxe Optimization
 
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/yrahul3910/mk8d/master.svg)](https://results.pre-commit.ci/latest/github/yrahul3910/mk8d/master)
+
 # Style Guide
 
 ## General
