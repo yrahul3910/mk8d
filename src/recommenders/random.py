@@ -14,3 +14,5 @@ class RandomRecommender(BaseRecommender):
 
             # Get score
             self._objective(config)
+
+        return [random.choice(x) for x in self.cat_ranges]
