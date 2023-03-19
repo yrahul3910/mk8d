@@ -17,7 +17,7 @@ class BORecommender(BaseRecommender):
                 dimensions=self.cat_ranges,
                 n_calls=10,
                 n_initial_points=5,
-                verbose=True
+                verbose=False
             )
         else:
             self.optimizer.tell(self.last_config, self.last_score)
