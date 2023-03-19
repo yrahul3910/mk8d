@@ -1,3 +1,4 @@
+import pandas as pd
 from skopt import gp_minimize
 
 from src.configs import get_config
@@ -14,4 +15,5 @@ class BORecommender(BaseRecommender):
             verbose=False
         )
 
-        return get_config(result.x)
+        recommendation = pd.Series(result.x, index=['Character', 'Body', 'Tires', 'Gliders'])
+        return get_config(recommendation)
