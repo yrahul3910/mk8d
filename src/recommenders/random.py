@@ -1,5 +1,8 @@
 import random
 
+import pandas as pd
+
+from src.configs import get_config
 from src.recommenders.base import BaseRecommender
 
 
@@ -15,4 +18,6 @@ class RandomRecommender(BaseRecommender):
             # Get score
             self._objective(config)
 
-        return [random.choice(x) for x in self.cat_ranges]
+        recommendation = pd.Series([random.choice(x) for x in self.cat_ranges],
+                                   index=['Character', 'Body', 'Tires', 'Gliders'])
+        return get_config(recommendation)

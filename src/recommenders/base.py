@@ -11,6 +11,8 @@ class BaseRecommender(ABC):
         self.stats_df = stats_df
         self.categories = self.stats_df.columns[1:5]
         self.cat_ranges = [np.unique(self.stats_df[col]) for col in self.categories]
+        self.scores = []
+        self.configs = []
 
     @abstractmethod
     def recommend(self):
