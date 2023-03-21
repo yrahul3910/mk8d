@@ -9,6 +9,8 @@ data_file = 'data/stats.csv'
 stats_df = pd.read_csv(data_file)
 
 recommender = 'bo'
+#TODO
+#score = int(input('Enter score: '))
 
 match recommender:
     case 'bo':
@@ -20,6 +22,6 @@ match recommender:
     case _:
         raise ValueError('Invalid recommender')
 
-recommender.recommend()
+final = recommender.recommend()
 
-print('Final recommendation:', recommender.recommend())
+print('Final recommendation:', final)

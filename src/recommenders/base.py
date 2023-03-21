@@ -13,13 +13,23 @@ class BaseRecommender(ABC):
         self.cat_ranges = [np.unique(self.stats_df[col]) for col in self.categories]
 
     @abstractmethod
-    def recommend(self):
+    def __recommend(self):
         raise NotImplementedError
+    
+    def recommend(self):
+        self.__recommend()
+        self.dump_to()  
 
     def _objective(self, *args):
+        print(args)
         config = get_config(pd.Series(args[0], index=self.categories).T)
         print()
         print(f'Config: {config}')
         score = int(input('Enter score: '))
         print()
         return score
+    
+    def dump_to(self):
+        #create file
+        #json module
+        #write 

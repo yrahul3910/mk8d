@@ -7,6 +7,7 @@ from src.recommenders.base import BaseRecommender
 
 
 class BIRecommender(BaseRecommender):
+    __name__ = 'bayesian inte'
     def __init__(self, stats_df):
         super().__init__(stats_df)
         self.weights = []
