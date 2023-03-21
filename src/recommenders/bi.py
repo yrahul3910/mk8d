@@ -7,13 +7,13 @@ from src.recommenders.base import BaseRecommender
 
 
 class BIRecommender(BaseRecommender):
-    __name__ = 'bayesian inte'
+    __name__ = 'bayesian inference'
     def __init__(self, stats_df):
         super().__init__(stats_df)
         self.weights = []
         self.scores = []
 
-    def recommend(self):
+    def __recommend(self):
         for _ in range(5):
             # Get random config
             w = np.random.normal(0, 1, 12)

@@ -1,0 +1,32 @@
+{
+    "ali": {
+        "config": {
+            "character": "Koopa Troopa, Lakitu, Browser Jr",
+            "kart": "Tanooki Kart, Koopa Clown, Master Cycle Zero",
+            "tire": "Metal, Gold Tires",
+            "glider": "Peach Parasol, Parafoil, Bowser Kite, MKTV Parafoil"
+        },
+        "optimizer_name": "bo",
+        "score": 10
+    },
+    "rahul": {
+        "config": {
+            "character": "Wario, Dry Bowser",
+            "kart": "Mach 8, Sports Coupe, Inkstriker",
+            "tire": "Slick, Cyber Slick",
+            "glider": "Wario Wing, Plane Glider, Gold Glider, Paraglider"
+        },
+        "optimizer_name": "bo",
+        "score": 10
+    },
+    "nodir": {
+        "config": {
+            "character": "Toadette, Wendy, Isabelle",
+            "kart": "Sneeker, Gold Standard (Gold Kart), Master Cycle",
+            "tire": "Off-Road, Retro Off-Road, Triforce Tires",
+            "glider": "Wario Wing, Plane Glider, Gold Glider, Paraglider"
+        },
+        "optimizer_name": "bo",
+        "score": 3
+    }
+}
