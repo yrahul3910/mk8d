@@ -20,7 +20,7 @@ class BaseRecommender(ABC):
     @abstractmethod
     def __recommend(self, player_name):
         raise NotImplementedError
-    
+
     def recommend(self):
         self.__recommend()
         self.dump_to('output.json', ['config', 'optimizer_name', 'score', ])
@@ -36,7 +36,7 @@ class BaseRecommender(ABC):
         print()
         self.score = score
         return score
-    
+
     def dump_to(self, filename, var_names):
         temp_dict = {}
         output_dict = {}
@@ -55,9 +55,9 @@ class BaseRecommender(ABC):
             json_data.update(output_dict)
             with open(filename, 'w') as file:
                 json.dump(json_data, file, indent=4)
-        
+
         else:
             json_data = output_dict
             with open(filename, 'w') as file:
                 json.dump(json_data, file, indent=4)
-            
+
