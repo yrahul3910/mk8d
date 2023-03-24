@@ -1,6 +1,7 @@
+import json
+import os
 from abc import ABC, abstractmethod
 
-import json
 import numpy as np
 import pandas as pd
 
@@ -16,14 +17,15 @@ class BaseRecommender(ABC):
         self.config = None
         self.optimizer_name = None
         self.player_name = player_name
+        self.config_number = 0
+        self.config_list = []
 
     @abstractmethod
-    def __recommend(self, player_name):
+    def _recommend(self, player_name):
         raise NotImplementedError
 
     def recommend(self):
-        self.__recommend()
-        self.dump_to('output.json', ['config', 'optimizer_name', 'score', ])
+        self._recommend()
 
     def _objective(self, *args):
         print(args)
@@ -35,16 +37,26 @@ class BaseRecommender(ABC):
         score = int(input('Enter score: '))
         print()
         self.score = score
+        self.config_number += 1
+        self.dump_to('output.json', ['config', 'optimizer_name', 'score'])
         return score
 
     def dump_to(self, filename, var_names):
         temp_dict = {}
         output_dict = {}
+        config_num = {}
         json_data = []
         for var_name in var_names:
             temp_dict[var_name] = getattr(self, var_name)
-
-        output_dict[self.player_name] = temp_dict
+        
+        config_num[self.config_number] = temp_dict
+        self.config_list.append(config_num)
+        output_dict[self.player_name] = self.config_list
+        
+        if not os.path.exists(filename):
+            # create the file if it does not exist
+            open(filename, 'w').close()
+        
         try:
             with open(filename, 'r') as file:
                 json_data = json.load(file)

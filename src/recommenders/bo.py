@@ -1,4 +1,3 @@
-from abc import ABC, abstractmethod
 import pandas as pd
 from skopt import gp_minimize
 
@@ -6,15 +5,10 @@ from src.configs import get_config
 from src.recommenders.base import BaseRecommender
 
 
-class BORecommender(ABC):
-    @abstractmethod
-    def _BaseRecommender__recommend(self):
-        pass
-
-class Myrecommender(BaseRecommender):
+class BORecommender(BaseRecommender):
     __name__ = 'bayesian optimization'
 
-    def _BaseRecommender__recommend(self):
+    def _recommend(self):
         result = gp_minimize(
             self._objective,
             dimensions=self.cat_ranges,

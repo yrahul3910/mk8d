@@ -13,7 +13,7 @@ class BIRecommender(BaseRecommender):
         self.weights = []
         self.scores = []
 
-    def __recommend(self):
+    def _recommend(self):
         for _ in range(5):
             # Get random config
             w = np.random.normal(0, 1, 12)
