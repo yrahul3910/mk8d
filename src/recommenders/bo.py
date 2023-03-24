@@ -6,7 +6,9 @@ from src.recommenders.base import BaseRecommender
 
 
 class BORecommender(BaseRecommender):
-    def recommend(self):
+    __name__ = 'bayesian optimization'
+
+    def _recommend(self):
         result = gp_minimize(
             self._objective,
             dimensions=self.cat_ranges,
@@ -14,6 +16,5 @@ class BORecommender(BaseRecommender):
             n_initial_points=5,
             verbose=False
         )
-
         recommendation = pd.Series(result.x, index=['Character', 'Body', 'Tires', 'Gliders'])
         return get_config(recommendation)

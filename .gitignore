@@ -3,3 +3,4 @@ mmypy_cache/
 .DS_Store
 .ruff_cache/
 .recommender
+output.json
