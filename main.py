@@ -21,6 +21,4 @@ match recommender:
     case _:
         raise ValueError('Invalid recommender')
 
-final = recommender.recommend()
-
-print('Final recommendation:', final)
+print('Final recommendation:', recommender.recommend())

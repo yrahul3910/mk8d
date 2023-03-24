@@ -21,7 +21,7 @@ class BaseRecommender(ABC):
         self.config_list = []
 
     @abstractmethod
-    def _recommend(self, player_name):
+    def _recommend(self, player_name: str):
         raise NotImplementedError
 
     def recommend(self):
@@ -38,10 +38,10 @@ class BaseRecommender(ABC):
         print()
         self.score = score
         self.config_number += 1
-        self.dump_to('output.json', ['config', 'optimizer_name', 'score'])
+        self._dump_to('output.json', ['config', 'optimizer_name', 'score'])
         return score
 
-    def dump_to(self, filename, var_names):
+    def _dump_to(self, filename, var_names):
         temp_dict = {}
         output_dict = {}
         config_num = {}
