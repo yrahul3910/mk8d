@@ -8,7 +8,7 @@ from src.recommenders.base import BaseRecommender
 
 class RandomRecommender(BaseRecommender):
     __name__ = 'random'
-    
+
     def __init__(self, stats_df):
         super().__init__(stats_df)
 
