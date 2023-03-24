@@ -48,15 +48,15 @@ class BaseRecommender(ABC):
         json_data = []
         for var_name in var_names:
             temp_dict[var_name] = getattr(self, var_name)
-        
+
         config_num[self.config_number] = temp_dict
         self.config_list.append(config_num)
         output_dict[self.player_name] = self.config_list
-        
+
         if not os.path.exists(filename):
             # create the file if it does not exist
             open(filename, 'w').close()
-        
+
         try:
             with open(filename, 'r') as file:
                 json_data = json.load(file)
@@ -72,4 +72,3 @@ class BaseRecommender(ABC):
             json_data = output_dict
             with open(filename, 'w') as file:
                 json.dump(json_data, file, indent=4)
-
