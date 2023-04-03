@@ -9,8 +9,8 @@ from src.recommenders.base import BaseRecommender
 class BIRecommender(BaseRecommender):
     __name__ = 'bayesian inference'
 
-    def __init__(self, stats_df):
-        super().__init__(stats_df)
+    def __init__(self, stats_df, player_name):
+        super().__init__(stats_df, player_name)
         self.weights = []
         self.scores = []
 
@@ -26,7 +26,7 @@ class BIRecommender(BaseRecommender):
             score = self._objective(config)
             self.scores.append(score)
 
-        for i in range(6):
+        for i in range(2):
             mu_w = np.mean(self.weights)
             sigma_w = np.std(self.weights)
             mu_x = np.mean(self.scores)
@@ -34,19 +34,22 @@ class BIRecommender(BaseRecommender):
 
             with pm.Model() as model:
                 # Prior for the weights w_i
-                weights = pm.Normal('weights', mu=mu_w, sigma=sigma_w, shape=12)
+                weights = pm.Normal('weights', mu=mu_w,
+                                    sigma=sigma_w, shape=12)
 
                 # Prior for the covariates x_i
                 covariates = pm.Normal('covariates', mu=mu_x,
                                        sigma=sigma_x, shape=(len(self.scores), 12))
 
                 # Likelihood for the observed score
-                score = pm.Deterministic('score', pm.math.dot(weights, covariates.T))
+                score = pm.Deterministic(
+                    'score', pm.math.dot(weights, covariates.T))
                 pm.Normal('score_obs', mu=score,
-                                      sigma=0.1, observed=self.scores)
+                          sigma=0.1, observed=self.scores)
 
             with model:
-                idata = pm.sample(1000, tune=2000, cores=1, return_inferencedata=True)
+                idata = pm.sample(1000, tune=2000, cores=1,
+                                  return_inferencedata=True)
 
             w = idata.posterior['weights'].mean(dim='draw')[0].values
             self.weights.append(w)

@@ -16,5 +16,6 @@ class BORecommender(BaseRecommender):
             n_initial_points=5,
             verbose=False
         )
-        recommendation = pd.Series(result.x, index=['Character', 'Body', 'Tires', 'Gliders'])
+        recommendation = pd.Series(
+            [result.x[1], result.x[0], result.x[3], result.x[2]], index=['character', 'body', 'tire', 'glider'])
         return get_config(recommendation)

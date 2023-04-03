@@ -1,5 +1,5 @@
 __pycache__/
-mmypy_cache/
+.mypy_cache/
 .DS_Store
 .ruff_cache/
 .recommender
