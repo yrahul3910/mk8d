@@ -18,32 +18,51 @@ characters = [
 ]
 
 karts = [
-    'Standard Kart, The Duke, 300 SL Roadster',
-    'Pipe Frame, Varmint, City Tripper',
-    'Mach 8, Sports Coupe, Inkstriker',
-    'Steel Driver, Tri-Speeder, Bone Rattelr',
-    'Cat Cruiser, Comet, Yoshi Bike, Teddy Buggy',
+    'Standard Kart, The Duke',
+    '300 SL Roadster',
+    'Pipe Frame',
+    'Varmint, City Tripper',
+    'Mach 8, Sports Coupe',
+    'Inkstriker',
+    'Steel Driver, Tri-Speeder',
+    'Bone Rattler',
+    'Cat Cruiser, Teddy Buggy',
+    'Comet, Yoshi Bike',
     'Circuit Special, B Dasher, P-Wing',
-    'Badwagon, Standard ATV (Quad), GLA',
-    'Prancer, Sport Bike, Jet Bike',
+    'Badwagon, GLA',
+    'Standard ATV (Quad)',
+    'Prancer',
+    'Sport Bike, Jet Bike',
     'Biddybuggy (Buggybud), Mr. Scooty',
-    'Landship, Streetle',
-    'Sneeker, Gold Standard (Gold Kart), Master Cycle',
-    'Standard Bike, Flame Rider, Wild Wiggler, W 25 Silver Arrow',
-    'Blue Falcon, Splat Buggy',
-    'Tanooki Kart, Koopa Clown, Master Cycle Zero'
+    'Landship',
+    'Streetle',
+    'Sneeker',
+    'Gold Standard (Gold Kart)',
+    'Master Cycle',
+    'Standard Bike, Flame Rider',
+    'Wild Wiggler',
+    'W 25 Silver Arrow',
+    'Blue Falcon',
+    'Splat Buggy',
+    'Tanooki Kart',
+    'Koopa Clown, Master Cycle Zero'
 ]
 
 tires = [
-    'Standard, Blue Standard, GLA Tires',
-    'Monster, Hot Monster, Ancient',
+    'Standard, Blue Standard',
+    'GLA Tires',
+    'Monster, Hot Monster',
+    'Ancient',
     'Roller, Azure Roller',
     'Slim, Wood, Crimson Slim',
     'Slick, Cyber Slick',
-    'Metal, Gold Tires',
+    'Metal',
+    'Gold Tires',
     'Button, Leaf Tires',
-    'Off-Road, Retro Off-Road, Triforce Tires',
-    'Sponge, Cushion'
+    'Off-Road, Retro Off-Road',
+    'Triforce Tires',
+    'Sponge',
+    'Cushion'
 ]
 
 gliders = [
@@ -56,8 +75,8 @@ gliders = [
 
 def get_config(row):
     return {
-        'character': characters[row['Character'] - 1],
-        'kart': karts[row['Body'] - 1],
-        'tire': tires[row['Tires'] - 1],
-        'glider': gliders[row['Gliders'] - 1]
+        'character': characters[row['character'] - 1],
+        'kart': karts[row['body'] - 1],
+        'tire': tires[row['tire'] - 1],
+        'glider': gliders[row['glider'] - 1]
     }

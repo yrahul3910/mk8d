@@ -1,4 +1,3 @@
-
 import pandas as pd
 
 from src.recommenders.bi import BIRecommender
@@ -15,9 +14,9 @@ match recommender:
     case 'bo':
         recommender = BORecommender(stats_df, player_name)
     case 'bi':
-        recommender = BIRecommender(stats_df)
+        recommender = BIRecommender(stats_df, player_name)
     case 'random':
-        recommender = RandomRecommender(stats_df)
+        recommender = RandomRecommender(stats_df, player_name)
     case _:
         raise ValueError('Invalid recommender')
 

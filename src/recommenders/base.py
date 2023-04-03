@@ -9,10 +9,15 @@ from src.configs import get_config
 
 
 class BaseRecommender(ABC):
-    def __init__(self, stats_df: pd.DataFrame, player_name):
+    __name__ = 'base'
+    INIT_CONFIGS = 5
+    OPTIMIZER_CONFIGS = 5
+
+    def __init__(self, stats_df: pd.DataFrame, player_name: str):
         self.stats_df = stats_df
         self.categories = self.stats_df.columns[1:5]
-        self.cat_ranges = [np.unique(self.stats_df[col]) for col in self.categories]
+        self.cat_ranges = [np.unique(self.stats_df[col])
+                           for col in self.categories]
         self.score = None
         self.config = None
         self.optimizer_name = None
@@ -21,16 +26,15 @@ class BaseRecommender(ABC):
         self.config_list = []
 
     @abstractmethod
-    def _recommend(self, player_name: str):
+    def _recommend(self):
         raise NotImplementedError
 
     def recommend(self):
-        self._recommend()
+        return self._recommend()
 
     def _objective(self, *args):
-        print(args)
         config = get_config(pd.Series(args[0], index=self.categories).T)
-        self.optimizer_name = 'bo'
+        self.optimizer_name = self.__name__
         self.config = config
         print()
         print(f'Config: {config}')
