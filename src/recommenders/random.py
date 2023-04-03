@@ -10,7 +10,7 @@ class RandomRecommender(BaseRecommender):
     __name__ = 'random'
 
     def _recommend(self):
-        for _ in range(10):
+        for _ in range(self.INIT_CONFIGS + self.OPTIMIZER_CONFIGS):
             # Get random config
             config = [random.choice(x) for x in self.cat_ranges]
 

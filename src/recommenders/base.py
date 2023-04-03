@@ -10,8 +10,10 @@ from src.configs import get_config
 
 class BaseRecommender(ABC):
     __name__ = 'base'
+    INIT_CONFIGS = 5
+    OPTIMIZER_CONFIGS = 5
 
-    def __init__(self, stats_df: pd.DataFrame, player_name):
+    def __init__(self, stats_df: pd.DataFrame, player_name: str):
         self.stats_df = stats_df
         self.categories = self.stats_df.columns[1:5]
         self.cat_ranges = [np.unique(self.stats_df[col])

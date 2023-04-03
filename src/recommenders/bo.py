@@ -12,10 +12,12 @@ class BORecommender(BaseRecommender):
         result = gp_minimize(
             self._objective,
             dimensions=self.cat_ranges,
-            n_calls=10,
-            n_initial_points=5,
+            n_calls=self.INIT_CONFIGS + self.OPTIMIZER_CONFIGS,
+            n_initial_points=self.INIT_CONFIGS,
             verbose=False
         )
+
+        # The result of `gp_minimize` returns a scrambled list, for whatever reason. This is a workaround.
         recommendation = pd.Series(
             [result.x[1], result.x[0], result.x[3], result.x[2]], index=['character', 'body', 'tire', 'glider'])
         return get_config(recommendation)

@@ -1,5 +1,6 @@
 
 import numpy as np
+import pandas as pd
 import pymc3 as pm
 
 from src.configs import get_config
@@ -9,13 +10,13 @@ from src.recommenders.base import BaseRecommender
 class BIRecommender(BaseRecommender):
     __name__ = 'bayesian inference'
 
-    def __init__(self, stats_df, player_name):
+    def __init__(self, stats_df: pd.DataFrame, player_name: str):
         super().__init__(stats_df, player_name)
         self.weights = []
         self.scores = []
 
     def _recommend(self):
-        for _ in range(5):
+        for _ in range(self.INIT_CONFIGS):
             # Get random config
             w = np.random.normal(0, 1, 12)
             self.weights.append(w)
@@ -26,7 +27,7 @@ class BIRecommender(BaseRecommender):
             score = self._objective(config)
             self.scores.append(score)
 
-        for i in range(2):
+        for i in range(self.OPTIMIZER_CONFIGS):
             mu_w = np.mean(self.weights)
             sigma_w = np.std(self.weights)
             mu_x = np.mean(self.scores)
