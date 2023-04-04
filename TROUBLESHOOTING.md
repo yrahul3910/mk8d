@@ -4,7 +4,7 @@
 
 ### Reason
 
-Theano is outdated. 
+Theano is outdated.
 
 ### Fix
 
@@ -12,7 +12,7 @@ In `...\site-packages\theano\scalar\basic.py`, change the line that says:
 
 ```
 self.ctor = getattr(np, o_type.dtype)
-``` 
+```
 
 to
 
@@ -54,7 +54,7 @@ In `...\Lib\site-packages\numpy\__init__.py` change the line that says:
 return np.round(X_orig).astype(np.int)
 ```
 
-to 
+to
 
 ```
 return np.round(X_orig).astype(int)
